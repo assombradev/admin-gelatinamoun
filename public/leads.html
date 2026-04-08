@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leads — Admin GM</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <header class="topbar">
+      <div class="topbar-logo">GELATINA MOUNJARO</div>
+      <div class="topbar-right">
+        <div class="topbar-status"><div class="status-dot"></div><span>conectado</span></div>
+        <button class="btn btn-ghost btn-sm" onclick="sair()">Sair</button>
+      </div>
+    </header>
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Visão Geral</div>
+        <a href="dashboard.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="funil.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          Funil
+        </a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Dados</div>
+        <a href="leads.html" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Leads
+        </a>
+        <a href="financeiro.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Financeiro
+        </a>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="page-header">
+        <h1 class="page-title">Leads</h1>
+        <p class="page-subtitle">Todos os leads capturados pelo funil</p>
+      </div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px">
+        <div class="kpi-card">
+          <div class="kpi-label">Total de Leads</div>
+          <div class="kpi-value" id="kpi-total">—</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Compraram</div>
+          <div class="kpi-value green" id="kpi-compraram">—</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Não Compraram</div>
+          <div class="kpi-value" id="kpi-nao">—</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Taxa de Conversão</div>
+          <div class="kpi-value green" id="kpi-taxa">—</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Lista de Leads</span>
+          <span class="card-badge" id="badge-total">0 leads</span>
+        </div>
+        <div class="filter-bar">
+          <input type="text" class="input-search" id="busca" placeholder="Buscar por nome ou WhatsApp..." oninput="filtrar()">
+          <select id="filtro-status" onchange="filtrar()">
+            <option value="">Todos</option>
+            <option value="comprou">Compraram</option>
+            <option value="nao">Não compraram</option>
+          </select>
+        </div>
+        <div id="tabela-leads">
+          <div class="loading"><div class="spinner"></div> carregando leads</div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/auth.js"></script>
+  <script src="js/leads.js"></script>
+</body>
+</html>

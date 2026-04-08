@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Admin GM</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-logo">GELATINA MOUNJARO</div>
+      <div class="topbar-right">
+        <div class="topbar-status">
+          <div class="status-dot"></div>
+          <span id="status-text">conectado</span>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="sair()">Sair</button>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Visão Geral</div>
+        <a href="dashboard.html" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="funil.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          Funil
+        </a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Dados</div>
+        <a href="leads.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Leads
+        </a>
+        <a href="financeiro.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Financeiro
+        </a>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="page-header">
+        <h1 class="page-title">Dashboard</h1>
+        <p class="page-subtitle" id="data-hoje"></p>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Leads Hoje</div>
+          <div class="kpi-value" id="kpi-leads">—</div>
+          <div class="kpi-delta neutral" id="kpi-leads-delta">carregando...</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Vendas Hoje</div>
+          <div class="kpi-value green" id="kpi-vendas">—</div>
+          <div class="kpi-delta neutral" id="kpi-vendas-delta">carregando...</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Faturamento Hoje</div>
+          <div class="kpi-value green" id="kpi-faturamento">—</div>
+          <div class="kpi-delta neutral" id="kpi-fat-delta">carregando...</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Conversão Geral</div>
+          <div class="kpi-value" id="kpi-conversao">—</div>
+          <div class="kpi-delta neutral" id="kpi-conv-delta">carregando...</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Ticket Médio</div>
+          <div class="kpi-value" id="kpi-ticket">—</div>
+          <div class="kpi-delta neutral">total acumulado</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Total de Leads</div>
+          <div class="kpi-value" id="kpi-total-leads">—</div>
+          <div class="kpi-delta neutral">acumulado</div>
+        </div>
+      </div>
+
+      <!-- DUAS COLUNAS -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+
+        <!-- Últimas Vendas -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Últimas Vendas</span>
+            <a href="financeiro.html" class="btn btn-ghost btn-sm">Ver tudo</a>
+          </div>
+          <div id="ultimas-vendas">
+            <div class="loading"><div class="spinner"></div> carregando</div>
+          </div>
+        </div>
+
+        <!-- Últimos Leads -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Últimos Leads</span>
+            <a href="leads.html" class="btn btn-ghost btn-sm">Ver tudo</a>
+          </div>
+          <div id="ultimos-leads">
+            <div class="loading"><div class="spinner"></div> carregando</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
