@@ -51,4 +51,17 @@ router.get('/stats', async (req, res) => {
   }
 })
 
+// PATCH /api/leads/:id — atualizar tela parada
+router.patch('/:id', async (req, res) => {
+  try {
+    await connectDB()
+    await Lead.findByIdAndUpdate(req.params.id, {
+      $set: { telaParada: req.body.telaParada }
+    })
+    res.json({ ok: true })
+  } catch (e) {
+    res.status(500).json({ ok: false, erro: e.message })
+  }
+})
+
 module.exports = router
