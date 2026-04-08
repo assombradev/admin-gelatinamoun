@@ -6,7 +6,17 @@ const connectDB = require('./db')
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: [
+    'https://mounjarogelatinaoficial.site',
+    'https://www.mounjarogelatinaoficial.site',
+    'http://localhost:5500',
+    'http://127.0.0.1:5500',
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'POST', 'PATCH'],
+  credentials: true
+}))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, '../public')))
 
